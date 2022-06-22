@@ -1,17 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
+#define start_ch '\0'
 string k="", s;
-char table1[26][26], table2[26][26];
+char table[128][128];
 
 void create_table()
 {
-    for(ll i=0;i<26;i++)
+    for(ll i=0;i<128;i++)
     {
-        for(ll j=0;j<26;j++)
+        for(ll j=0;j<128;j++)
         {  
-            table1[i][j]=((i+j)%26)+'a';
-            table2[i][j]=((i+j)%26)+'A';
+            table[i][j]=((i+j)%128)+start_ch;
+            
     }}
 }
 
@@ -21,12 +22,9 @@ void encryption(string s)
     
     for(ll i=0; i<s.size(); i++)
     {   
-        if(s[i]>='a' && s[i]<='z')
-        k+= (table1[(s[i]-'a')][i%26]);
-        else
-        k+= (table2[(s[i]-'A')][i%26]);
         
-       // cout << k[i];
+        k+= (table[(s[i]-start_ch)][i%128]);
+     
     }
     cout << k;
     cout << '\n';
@@ -39,18 +37,12 @@ void decryption()
     cout << "Plain Text: \n";
     string tmp="";
     for(ll i=0; i<k.size();i++){
-        if(k[i]>='a' && k[i]<='z'){
-        for(ll j=0;j<26;j++)
+        
+        for(ll j=0;j<128;j++)
         {
-            if(table1[j][i%26]==k[i]) {tmp+= ('a'+j);}
-        }}
-        else
-        {
-          for(ll j=0;j<26;j++)
-        {
-            if(table2[j][i%26]==k[i]) {tmp+= ('A'+j);}
-        }  
+            if(table[j][i%128]==k[i]) {tmp+= (start_ch+j);}
         }
+  
     }
     cout << tmp;
 }
