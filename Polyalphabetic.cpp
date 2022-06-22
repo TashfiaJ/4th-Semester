@@ -2,15 +2,16 @@
 using namespace std;
 #define ll long long
 string k="", s;
-char table[26][26];
+char table[128][128];
 
 void create_table()
 {
-    for(ll i=0;i<26;i++)
+    for(ll i=0;i<128;i++)
     {
-        for(ll j=0;j<26;j++)
-            table[i][j]=((i+j)%26)+'a';
-    }
+        for(ll j=0;j<128;j++)
+        {  
+            table[i][j]=((i+j)%128)+'a';
+    }}
 }
 
 void encryption(string s)
@@ -19,7 +20,7 @@ void encryption(string s)
     
     for(ll i=0; i<s.size(); i++)
     {
-        k+= (table[(s[i]-'a')][i%3]);
+        k+= (table[(s[i]-'a')][i%128]);
        // cout << k[i];
     }
     cout << k;
@@ -33,9 +34,9 @@ void decryption()
     cout << "Plain Text: \n";
     string tmp="";
     for(ll i=0; i<k.size();i++){
-        for(ll j=0;j<26;j++)
+        for(ll j=0;j<128;j++)
         {
-            if(table[j][i%3]==k[i]) {tmp+= ('a'+j);}
+            if(table[j][i%128]==k[i]) {tmp+= ('a'+j);}
         }
     }
     cout << tmp;
@@ -47,6 +48,5 @@ int main()
     cout <<"Enter text: \n";
     cin >> s;
     encryption (s);
-    
     decryption ();       
 }
