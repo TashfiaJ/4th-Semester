@@ -156,5 +156,27 @@ select customer_name, borrower.loan_number, amount from borrower, loan where bor
 select customer_name, borrower.loan_number as loan_id, amount from borrower, loan where borrower.loan_number=loan.loan_number;
 
 select distinct customer_name from account, depositor where depositor.account_number=account.account_number and branch_name='Perryridge' intersect (select distinct customer_name from loan, borrower where loan.loan_number=borrower.loan_number and branch_name='Perryridge');
+--set operation
+select customer_name from depositor union ( select customer_name from borrower);
 
+select customer_name from depositor intersect ( select customer_name from borrower);
 
+select customer_name from depositor minus ( select customer_name from borrower);
+
+select avg(balance) from account where branch_name='Perryridge';
+
+select count(*) from customer;
+
+select count(distinct customer_name) from depositor;
+
+select branch_name, count(distinct customer_name) from depositor, account where account.account_number=depositor.account_number group by branch_name;
+
+select distinct customer_name
+	from borrower, loan
+	where borrower.loan_number = loan.loan_number and
+        	  branch_name = 'Perryridge'  and
+                customer_name in
+		(select customer_name
+		  from depositor, account
+		  where depositor.account_number = 
+                                     account.account_number and branch_name = 'Perryridge');
