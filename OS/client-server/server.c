@@ -55,6 +55,7 @@ int main(void)
     if ((new_sockfd = accept(sockfd, (struct sockaddr *)&their_addr, &sin_size)) < 0) {
         perror("ERROR on accept"); exit(1);  }
     printf("server: got connection from %s\n",inet_ntoa(their_addr.sin_addr));
+    //edit
     char buf[]="Please enter the message: ";
     send(new_sockfd, &buf, sizeof(buf), 0);
 
