@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 
     if (connect(sockfd, (struct sockaddr *)&server_addr, sizeof(struct sockaddr)) < 0) {
         perror("ERROR connecting");  exit(0);  }
-
+    //edit
     char buffer[1024];
     recv(sockfd, &buffer, sizeof(buf), 0);
 
