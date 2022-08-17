@@ -1,0 +1,80 @@
+--create or replace function get_sal (p_id employees.employee_id%type) return number is v_sal employees.salary%type:=0;
+    --begin
+    --select salary
+    --into v_sal
+    --from employees
+    --where employee_id=p_id;
+    --return v_sal;
+   --end get_sal;
+  --/
+--set serveroutput on;
+--execute dbms_output.put_line(get_sal(100));
+
+--create or replace function get_area(r number) return number is v_rad number:=0;
+    --begin
+    --select 3.1416*r*r
+    --into v_rad
+    --from dual;
+    --return v_rad;
+    --end get_area;
+ -- /
+--set serveroutput on;
+--execute dbms_output.put_line(get_sal(100));
+
+--create or replace function tax
+--(p_id employees.employee_id%TYPE) return number is v_sal employees.salary%type:=0;
+--Begin
+ --select ((salary+salary*NVL(commission_pct,0))*12)*0.1 into v_sal from employees where employee_id=p_id;
+ --return v_sal;
+--end tax;
+--/
+
+--DECLARE
+	--v_num1 NUMBER := 5;
+	--v_num2 NUMBER := 3;
+	--v_num3 NUMBER := 10;
+	--v_temp NUMBER :=0;
+--BEGIN
+	
+	--IF v_num1 > v_num2
+	--THEN
+	--	v_temp := v_num1;
+	--end if;
+	--IF v_num2 > v_num1
+	--THEN
+	--	v_temp := v_num2;
+	--end if;
+	--IF v_num3 > v_temp
+	--THEN
+	--	v_temp := v_num3;
+	
+	--END IF;
+	
+	--DBMS_OUTPUT.PUT_LINE('Largest number = '||v_temp);
+--END;
+--/
+
+--largest number between 3 numbers
+DECLARE
+	v_num1 NUMBER := 5;
+	v_num2 NUMBER := 3;
+	v_num3 NUMBER := 10;
+	v_temp NUMBER :=0;
+BEGIN
+	
+	IF v_num1 > v_num2
+	THEN
+		v_temp := v_num1;
+	ELSE IF v_num2 > v_num1
+	THEN
+		v_temp := v_num2;
+	end if;
+	IF v_num3 > v_temp
+	THEN
+		v_temp := v_num3;
+	
+	END IF;
+	
+	DBMS_OUTPUT.PUT_LINE('Largest number = '||v_temp);
+END;
+/
