@@ -5,7 +5,7 @@
 #include<semaphore.h>
 
 #define row 3
-#define column 10
+#define column 5000000
 sem_t lock; // semaphore
 int count; // global variable
 pthread_t threads[row];
@@ -30,12 +30,12 @@ int main()
     {
         for(int j=0;j<column;j++)
         {
-            scanf("%d", &matrix[i][j]);
+            //scanf("%d", &matrix[i][j]);
+            matrix[i][j]=1;
         }
     }
-
     sem_init(&lock, 0, 1);
-
+    clock_t begin_time = clock();
     for(int i=0;i<row;i++)
     {
         int* save_i = (int*)malloc(sizeof(int));
@@ -43,6 +43,7 @@ int main()
 		pthread_create(&threads[i], NULL, doStuffWithSync, (void*)save_i);
     }
     for(int i=0; i<row; i++) pthread_join(threads[i],NULL);
-    printf("Number of 1's(Synchronization): %d\n",count);
+    clock_t end_time = clock();
+    printf("Number of 1's(Synchronization): %d Time=%.2lf\n",count, (double)(end_time-begin_time)/CLOCKS_PER_SEC);
 }
 
