@@ -1,3 +1,4 @@
+// C++ program for the above approach
 #include <bits/stdc++.h>
 using namespace std;
 typedef unsigned long long int int64;
@@ -83,8 +84,7 @@ string gethex(string bin)
 	if (bin == "1110")
 		return "e";
 	if (bin == "1111")
-		return "f";
-}
+		return "f"; }
 
 // Function to convert a decimal value
 // to hexa decimal value
@@ -383,7 +383,7 @@ int main()
 {
 	// Input
 	string S;
-    cin >> S;
+	getline(cin, S);
 
 	// Function Call
 	cout << S << ": " << SHA512(S);
