@@ -1,3 +1,5 @@
+/*Here there are two semaphores: Mutex and a semaphore array for the philosophers. Mutex is used such that no two philosophers may access the pickup or putdown at the same time. The array is used to control the behavior of each philosopher.*/
+
 #include <stdio.h>
 #include <pthread.h>
 #include <semaphore.h>
