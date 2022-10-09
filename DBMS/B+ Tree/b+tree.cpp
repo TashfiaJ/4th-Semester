@@ -157,9 +157,10 @@ int main(void)
     auto stop1 = high_resolution_clock::now();
     auto duration1 = duration_cast<milliseconds>(stop1 - start1);
     cout << "Time taken to build Tree: " << duration1.count() << endl;
-    cout<<"enter text to search: ";
+    cout<<"enter text to search: (enter exit to terminate)";
     while(cin>>searchEnglish)
-    {       
+    {      
+         if(searchEnglish=="exit")break;   
          auto start = high_resolution_clock::now();
     	 leaf= findLeaf(root,searchEnglish);
     	 for(i=0; i<leaf->currentNode; i++) if(searchEnglish==leaf->english[i]) break;
